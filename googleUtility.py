@@ -3,7 +3,7 @@ from datetime import datetime
 
 # Direction { from: home, to: destinate, time: hour, distance: miles}
 
-#gmaps = googlemaps.Client(key='AIzaSyAtEjI2GFrFZWUx9wJLdx6FpbFnyeH6R38')
+#gmaps = googlemaps.Client(key='')
 
 # Request directions via public transit
 now = datetime.now()
@@ -13,7 +13,7 @@ now = datetime.now()
 # calculate distance
 class GoogleAPI():
     def __init__(self):
-        self.gmaps = googlemaps.Client(key='AIzaSyAtEjI2GFrFZWUx9wJLdx6FpbFnyeH6R38')
+        self.gmaps = googlemaps.Client(key='')
 
     def directions(self, origin, destination):
         try:
