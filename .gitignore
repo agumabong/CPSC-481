@@ -1,5 +1,4 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 env/
-
-# AIzaSyAtEjI2GFrFZWUx9wJLdx6FpbFnyeH6R38
+config.json

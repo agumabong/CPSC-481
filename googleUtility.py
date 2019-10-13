@@ -1,19 +1,17 @@
-import googlemaps
+import googlemaps, json
 from datetime import datetime
 
+# Load config file
+with open('config.json') as json_data_file:
+    data = json.load(json_data_file)
+
 # Direction { from: home, to: destinate, time: hour, distance: miles}
-
-#gmaps = googlemaps.Client(key='')
-
-# Request directions via public transit
 now = datetime.now()
-
-# validate location function
 
 # calculate distance
 class GoogleAPI():
     def __init__(self):
-        self.gmaps = googlemaps.Client(key='')
+        self.gmaps = googlemaps.Client(key=data['apikey'])
 
     def directions(self, origin, destination):
         try:
@@ -24,4 +22,4 @@ class GoogleAPI():
             print(results[0]['legs'][0]['end_address'])
             print(results[0]['legs'][0]['start_address'])
         except:
-            sys.exit("Error")
+            sys.exit("Google API Error")
