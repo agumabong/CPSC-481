@@ -16,10 +16,12 @@ class GoogleAPI():
     def directions(self, origin, destination):
         try:
             results = self.gmaps.directions(origin, destination, departure_time=now)
-            print(results[0]['legs'][0]['distance']['text'])
-            print(results[0]['legs'][0]['duration']['text'])
-            print(results[0]['legs'][0]['duration_in_traffic']['text'])
-            print(results[0]['legs'][0]['end_address'])
-            print(results[0]['legs'][0]['start_address'])
+            jsonBody = {'start':'','end':'','distance':'','duration':'','duration_traffic':''}
+            jsonBody['start'] = results[0]['legs'][0]['start_address']
+            jsonBody['end'] = results[0]['legs'][0]['end_address']
+            jsonBody['distance'] = results[0]['legs'][0]['distance']['text']
+            jsonBody['duration'] = results[0]['legs'][0]['duration']['text']
+            jsonBody['duration_traffic'] = results[0]['legs'][0]['duration_in_traffic']['text']
+            print(jsonBody)
         except:
             sys.exit("Google API Error")
