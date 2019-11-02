@@ -1,22 +1,43 @@
 from googleUtility import GoogleAPI
 
-#Variables to track if the user wants to find distance or time
-distance = False
-time = False
 googleapi = GoogleAPI()
 
-#ask the user whether or not they want to find shortest distance or time
-print("Welcome to Route Calculator!")
-user_input = input("Find the shortest distance or time? ")
-if (user_input.lower() == "distance"):
-    distance = True
-elif (user_input.lower() == "time"):
-    time = True
-else:
-    print("invalid input, please put time or distance")
+def askRouteType():
+    user_input = input("Find the shortest distance or time? ")
+    if (user_input.lower() == "distance"):
+        routeType = "distance"
+        validType = True
+    elif (user_input.lower() == "time"):
+        routeType = "time"
+        validType = True
+    else:
+        print("Invalid input, please put time or distance")
+        validType = False
+    return validType
 
-#preliminary starting location
-startLoc = input("Enter starting location (City, State): ")
-endLoc = input("Add destination (City, State): ")
+def main():
+    routeType = ""
+    destination = []
+    validType = False
+    maxDestinations = 1
 
-googleapi.directions(startLoc, endLoc)
+    print("Welcome to Route Calculator!")
+    while not validType:
+        validType = askRouteType()
+
+    # Ask user for destinations. 5 max
+    destination.append(input("Enter starting location (City, State): "))
+    destination.append(input("Add next destination (City, State): "))
+    while maxDestinations <= 3:
+        tempDestination = input("Add next destination or end: ")
+        if tempDestination.lower() == "end":
+            break
+        else:
+            destination.append(tempDestination)
+            maxDestinations += 1
+    print(destination)
+
+#googleapi.directions(startLoc, nextLoc)
+
+if __name__ == "__main__":
+    main()
