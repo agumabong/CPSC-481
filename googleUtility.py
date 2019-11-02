@@ -23,5 +23,6 @@ class GoogleAPI():
             jsonBody['duration'] = results[0]['legs'][0]['duration']['text']
             jsonBody['duration_traffic'] = results[0]['legs'][0]['duration_in_traffic']['text']
             print(jsonBody)
+            return jsonBody
         except:
             sys.exit("Google API Error")

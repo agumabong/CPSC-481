@@ -5,4 +5,5 @@ googleapi = GoogleAPI()
 first = input("Enter location(City, State): ")
 second = input("Enter location(City, State): ")
 
-googleapi.directions(first, second)
+results = googleapi.directions(first, second)
+print(results['distance'][:3])
