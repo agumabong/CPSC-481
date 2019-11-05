@@ -1,0 +1,67 @@
+loc = ["LA", "BOI", "DAL", "CHI"]
+l = []
+
+#node for the tree
+class node:
+    #node has list of parents, list of children, time and distance
+    def __init__ (self, plist):        
+        self.parent_list = []
+        self.children = []
+        self.time = 0
+        self.distance = 0
+        self.dlist = ["LA", "BOI", "DAL", "CHI"]
+        self.city = ""
+
+        #add the elements of plist to the parent list
+        for i in range(len(plist)):
+            self.parent_list.append(plist[i])
+            
+    #used to test the parent list 
+    def get_plist(self):
+        return self.parent_list
+
+    def add_city(self, city):
+        self.parent_list.append(city)
+
+    def remove_city(self, city):
+        self.dlist.remove(city)
+
+    def add_child(self, child):
+        self.children.append(child)
+
+    def get_dlist(self):
+        return self.dlist
+
+    def get_child(self):
+        return self.children
+
+    def set_name(self, city_name):
+        self.city = city_name
+
+x = node(l)
+
+def makeNode(n,parent_list, p):
+
+    #check if any of the parents are in the destination list
+    for i in range(len(parent_list)):
+        if parent_list[i] in n.dlist:
+            n.remove_city(parent_list[i])
+    
+
+    if len(n.dlist == 0):
+        return ""
+
+    else:
+        while len(dlist > 0):
+            z = node(n.plist)
+            makeNode(z,n.plist,
+            
+            
+            
+        
+makeNode(x,["BOI"],"LA")
+print(x.get_dlist())
+        
+        
+
+
