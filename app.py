@@ -39,18 +39,22 @@ def main():
 
     # make tree
     emptyList = []
+    emptyDict = {}
     parents = []
     destinationList = userInput[:-1].copy()
     print(destinationList)
-    start = Node(userInput[0], emptyList, destinationList[:-1], '')
-    goal = Node(userInput[-1], emptyList, '', emptyList)
+    start = Node(userInput[0], emptyList, destinationList[:-1], emptyDict)
+    goal = Node(userInput[-1], emptyList, '', emptyDict)
     makeTree(start, goal, destinationList)
 
     # accessing nodes
     print(routeType[0])
-    print(start.destinations)
-    print(start.children)
-    print(start.parents)
+    #print(start.destinations)
+    #print(start.children)
+    for child in start.children:
+        print(child.data['distance'])
+
+    # get data['distance']
     # use start node
 
 #googleapi.directions(startLoc, nextLoc)

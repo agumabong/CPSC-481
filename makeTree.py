@@ -7,6 +7,7 @@ def makeTree(n, goal, destinationList):
     plist = n.parents.copy()
     dlist = destinationList.copy()
     name = n.name
+    # remove itself from destination list
     if n.name in dlist:
         dlist.remove(n.name)
 
@@ -17,8 +18,9 @@ def makeTree(n, goal, destinationList):
     print("Destination List: "+str(dlist))
     print("Dlist size: "+ str(len(dlist)))
 
+    # if end of branch, add goal
     if len(dlist) == 0:
-        print("added goal")
+        print("Added goal")
         n.children.append(goal)
         return 0
 
@@ -27,14 +29,16 @@ def makeTree(n, goal, destinationList):
         for d in range(len(dlist)):
             # Call API between current node and dlist[d] = data
             data = googleapi.directions(n.name, dlist[d])
-
+            print(type(data))
+            # create child node
             childNode = Node(dlist[d], plist, destinationList, data)
             if n.name not in childNode.parents:
-                print("added parent to list")
+                print("Added parent to list")
                 childNode.parents.append(name)
-            print("Current: " + str(childNode.name))
-            print("Parents: " + str(childNode.parents))
-            print("Children: "+ str(childNode.children))
+            #print("data: "+str(childNode.data['duration']))
+            #print("Current: " + str(childNode.name))
+            #print("Parents: " + str(childNode.parents))
+            #print("Children: "+ str(childNode.children))
             n.children.append(childNode)
             makeTree(childNode, goal, destinationList)
     return 0

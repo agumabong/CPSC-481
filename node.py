@@ -1,3 +1,5 @@
+import json
+
 class Node(object):
     def __init__(self, name, parents, destinations, data):
         self.name = name
