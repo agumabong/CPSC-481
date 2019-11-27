@@ -27,7 +27,7 @@ def makeTree(n, goal, destinationList):
         for d in range(len(dlist)):
             # Call API between current node and dlist[d] = data
             data = googleapi.directions(n.name, dlist[d])
-            
+
             childNode = Node(dlist[d], plist, destinationList, data)
             if n.name not in childNode.parents:
                 print("added parent to list")
@@ -35,6 +35,7 @@ def makeTree(n, goal, destinationList):
             print("Current: " + str(childNode.name))
             print("Parents: " + str(childNode.parents))
             print("Children: "+ str(childNode.children))
+            n.children.append(childNode)
             makeTree(childNode, goal, destinationList)
     return 0
 

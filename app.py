@@ -14,17 +14,16 @@ def askRouteType():
     else:
         print("Invalid input, please put time or distance")
         validType = False
-    return validType
+    return [routeType, validType]
 
 def main():
-    routeType = ""
     userInput = []
-    validType = False
+    routeType = ["", False]
     maxDestinations = 1
 
     print("Welcome to Route Calculator!")
-    while not validType:
-        validType = askRouteType()
+    while not routeType[1]:
+        routeType = askRouteType()
 
     # Ask user for destinations. 5 max
     userInput.append(input("Enter starting location (City, State): "))
@@ -40,13 +39,19 @@ def main():
 
     # make tree
     emptyList = []
-    results = []
     parents = []
     destinationList = userInput[:-1].copy()
     print(destinationList)
-    start = Node(userInput[0], emptyList, destinationList[:-1], results)
-    goal = Node(userInput[-1], emptyList, '', '')
+    start = Node(userInput[0], emptyList, destinationList[:-1], '')
+    goal = Node(userInput[-1], emptyList, '', emptyList)
     makeTree(start, goal, destinationList)
+
+    # accessing nodes
+    print(routeType[0])
+    print(start.destinations)
+    print(start.children)
+    print(start.parents)
+    # use start node
 
 #googleapi.directions(startLoc, nextLoc)
 
