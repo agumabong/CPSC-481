@@ -1,4 +1,5 @@
 from googleUtility import GoogleAPI
+from makeTree import *
 
 googleapi = GoogleAPI()
 
@@ -17,7 +18,7 @@ def askRouteType():
 
 def main():
     routeType = ""
-    destination = []
+    userInput = []
     validType = False
     maxDestinations = 1
 
@@ -26,16 +27,26 @@ def main():
         validType = askRouteType()
 
     # Ask user for destinations. 5 max
-    destination.append(input("Enter starting location (City, State): "))
-    destination.append(input("Add next destination (City, State): "))
+    userInput.append(input("Enter starting location (City, State): "))
+    userInput.append(input("Add next destination (City, State): "))
     while maxDestinations <= 3:
         tempDestination = input("Add next destination or end: ")
         if tempDestination.lower() == "end":
             break
         else:
-            destination.append(tempDestination)
+            userInput.append(tempDestination)
             maxDestinations += 1
-    print(destination)
+    print(userInput)
+
+    # make tree
+    emptyList = []
+    results = []
+    parents = []
+    destinationList = userInput[:-1].copy()
+    print(destinationList)
+    start = Node(userInput[0], emptyList, destinationList[:-1], results)
+    goal = Node(userInput[-1], emptyList, '', '')
+    makeTree(start, goal, destinationList)
 
 #googleapi.directions(startLoc, nextLoc)
 
