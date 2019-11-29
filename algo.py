@@ -1,4 +1,5 @@
 #float(i.data[routeType[0]][0:-3])
+from genChildren import *
 def min(lst, routetype):
     min = 99999
     minIndex = 0
@@ -17,13 +18,13 @@ def min(lst, routetype):
             #print(lst[i].parents[-1], "to",lst[i].name, data)
         # #print("data type: ", type(data))
         # #print("data: ", data)
-        if data <= min:
+        if data < min:
             min = data
             minIndex = i
     #print("minIndex: ", minIndex)
     return minIndex
 
-def algo(startNode, end, routetype):
+def algo(startNode, end, routetype, userList):
     #print("start node type:", type(startNode))
     pq = [startNode]
     goal = end
@@ -60,6 +61,7 @@ def algo(startNode, end, routetype):
                 pathString = pathString + " -> " + i
             return pathString
         else:
+            genChildren(popped, goal, userList)
             for i in popped.children:
                 if i.visited == False:
                     i.visited = True

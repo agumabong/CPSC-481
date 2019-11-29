@@ -48,8 +48,8 @@ def main():
     startData = {'start': '', 'end': '', 'distance': '0.0 mi', 'duration': '0 mins', 'duration_traffic': '0 mins'}
     start = Node(userInput[0], emptyList, destinationList[:-1], startData)
     goal = Node(userInput[-1], emptyList, '', emptyList)
-    print("Generating tree...")
-    makeTree(start, goal, destinationList)
+    # print("Generating tree...")
+    # makeTree(start, goal, destinationList)
 
     # accessing nodes
     #print(routeType[0])
@@ -65,7 +65,7 @@ def main():
 
     # print("========================== START OF ALGORITHM =============================")
     print("Starting algorithm...")
-    path = algo(start, goal, routeType[0])
+    path = algo(start, goal, routeType[0], userInput)
     print("Algorithm complete...")
     print("user input:", userInput)
     #print("path type:", type(path))
