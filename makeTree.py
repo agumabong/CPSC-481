@@ -20,19 +20,24 @@ def makeTree(n, goal, destinationList):
 
     if len(dlist) == 0:
         print("added goal")
+
         data = googleapi.directions(n.name, goal.name)
-        goal.data = data
-        print("goal parents", goal.parents)
-        print("n.parents", n.parents)
-        print("n.name", n.name)
-        goal.parents.clear()
+        newGoal = Node(goal.name, [], [], data)
+        # print("goal parents", goal.parents)
+        # print("n.parents", n.parents)
+        # print("n.name", n.name)
+        # goal.parents.clear()
         for i in n.parents:
-            goal.parents.append(i)
-        goal.parents.append(n.name)
-        print("new goal parents:", goal.parents)
+            newGoal.parents.append(i)
+        newGoal.parents.append(n.name)
+        #     goal.parents.append(i)
+        # goal.parents.append(n.name)
+
+        print("new goal parents:", newGoal.parents)
         # goal.parents.append(n.parents)
         # goal.parents.append(name)
-        n.children.append(goal)
+        # n.children.append(goal)
+        n.children.append(newGoal)
         return 0
 
     else:

@@ -64,6 +64,7 @@ def main():
     print("========================== START OF ALGORITHM =============================")
 
     path = algo(start, goal, routeType[0])
+    print("user input:", userInput)
     print("path type:", type(path))
     print("path:", path)
 #googleapi.directions(startLoc, nextLoc)

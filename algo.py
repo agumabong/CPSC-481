@@ -4,7 +4,7 @@ def min(lst, routetype):
     minIndex = 0
     for i in range(len(lst)):
         # data = lst[i].data
-        data = float(lst[i].data[routetype][0:-3].replace(",",""))
+        data = float(lst[i].data[routetype][0:-2].replace(",",""))
         # if routetype == "distance":
         #     data = float(lst[i].data[routetype][0:-3].replace(",",""))
         # elif routetype == "time":
@@ -13,9 +13,11 @@ def min(lst, routetype):
         #     if day in time:
         #         dayInMins =
         #     data = float(lst[i].data[routetype][0:-5].replace(",",))
-        print("data type: ", type(data))
-        print("data: ", data)
-        if data < min:
+        if len(lst[i].parents) > 0:
+            print(lst[i].parents[-1], "to",lst[i].name, data)
+        # print("data type: ", type(data))
+        # print("data: ", data)
+        if data <= min:
             min = data
             minIndex = i
     print("minIndex: ", minIndex)
@@ -28,10 +30,15 @@ def algo(startNode, end, routetype):
     # path = []
     while len(pq) != 0:
         # print("pq empty?", len(pq) == 0)
+        listOfPq = ""
+        for i in pq:
+            listOfPq = listOfPq + " " + i.name
+        print("pq before pop: ", listOfPq)
         popped = pq.pop(min(pq, routetype))
         # popped = pq.pop(0)
         # print("popped type:", type(popped))
-        print("popped:", popped.name)
+        if len(popped.parents) > 0:
+            print("popped:", popped.parents[-1], "to", popped.name)
         # print("pq:", pq)
         # print("pq length:", len(pq))
         # print("min function type", type(min(pq, routetype)))
@@ -42,6 +49,7 @@ def algo(startNode, end, routetype):
         #     path.append(popped.name)
         if popped.name == goal.name:
             print("goal reached")
+            print("goal data", popped.data)
             print("goal.name", popped.name)
             print("goal.parents", popped.parents)
             path = popped.parents
