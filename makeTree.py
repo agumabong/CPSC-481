@@ -1,5 +1,6 @@
 from googleUtility import GoogleAPI
 from node import Node
+import random
 
 googleapi = GoogleAPI()
 
@@ -19,6 +20,18 @@ def makeTree(n, goal, destinationList):
 
     if len(dlist) == 0:
         print("added goal")
+        data = googleapi.directions(n.name, goal.name)
+        goal.data = data
+        print("goal parents", goal.parents)
+        print("n.parents", n.parents)
+        print("n.name", n.name)
+        goal.parents.clear()
+        for i in n.parents:
+            goal.parents.append(i)
+        goal.parents.append(n.name)
+        print("new goal parents:", goal.parents)
+        # goal.parents.append(n.parents)
+        # goal.parents.append(name)
         n.children.append(goal)
         return 0
 
@@ -27,8 +40,10 @@ def makeTree(n, goal, destinationList):
         for d in range(len(dlist)):
             # Call API between current node and dlist[d] = data
             data = googleapi.directions(n.name, dlist[d])
-
+            # data = random.randint(0,50)
+            print("rand data: ", data)
             childNode = Node(dlist[d], plist, destinationList, data)
+            print("data in node: ", childNode.data)
             if n.name not in childNode.parents:
                 print("added parent to list")
                 childNode.parents.append(name)

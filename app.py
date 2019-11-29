@@ -1,6 +1,6 @@
 from googleUtility import GoogleAPI
 from makeTree import *
-
+from algo import *
 googleapi = GoogleAPI()
 
 def askRouteType():
@@ -42,17 +42,30 @@ def main():
     parents = []
     destinationList = userInput[:-1].copy()
     print(destinationList)
-    start = Node(userInput[0], emptyList, destinationList[:-1], '')
+
+    # startData = googleapi.directions(userInput[0], userInput[0])
+    startData = {'start': '', 'end': '', 'distance': '0.0 mi', 'duration': '0 mins', 'duration_traffic': '0 mins'}
+    start = Node(userInput[0], emptyList, destinationList[:-1], startData)
     goal = Node(userInput[-1], emptyList, '', emptyList)
     makeTree(start, goal, destinationList)
 
     # accessing nodes
     print(routeType[0])
+    print("start:", start.name)
     print(start.destinations)
-    print(start.children)
+    for i in start.children:
+        print(i.name)
+        print(type(i.data))
+        print("data:", i.data)
+    # print(start.children[0].name)
     print(start.parents)
     # use start node
 
+    print("========================== START OF ALGORITHM =============================")
+
+    path = algo(start, goal, routeType[0])
+    print("path type:", type(path))
+    print("path:", path)
 #googleapi.directions(startLoc, nextLoc)
 
 if __name__ == "__main__":
