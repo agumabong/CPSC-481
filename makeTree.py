@@ -15,17 +15,17 @@ def makeTree(n, goal, destinationList):
     for p in plist:
         if p in dlist:
             dlist.remove(p)
-    print("Destination List: "+str(dlist))
-    print("Dlist size: "+ str(len(dlist)))
+    #print("Destination List: "+str(dlist))
+    #print("Dlist size: "+ str(len(dlist)))
 
     if len(dlist) == 0:
-        print("added goal")
+        #print("added goal")
 
         data = googleapi.directions(n.name, goal.name)
         newGoal = Node(goal.name, [], [], data)
-        # print("goal parents", goal.parents)
-        # print("n.parents", n.parents)
-        # print("n.name", n.name)
+        # #print("goal parents", goal.parents)
+        # #print("n.parents", n.parents)
+        # #print("n.name", n.name)
         # goal.parents.clear()
         for i in n.parents:
             newGoal.parents.append(i)
@@ -33,7 +33,7 @@ def makeTree(n, goal, destinationList):
         #     goal.parents.append(i)
         # goal.parents.append(n.name)
 
-        print("new goal parents:", newGoal.parents)
+        #print("new goal parents:", newGoal.parents)
         # goal.parents.append(n.parents)
         # goal.parents.append(name)
         # n.children.append(goal)
@@ -46,15 +46,15 @@ def makeTree(n, goal, destinationList):
             # Call API between current node and dlist[d] = data
             data = googleapi.directions(n.name, dlist[d])
             # data = random.randint(0,50)
-            print("rand data: ", data)
+            #print("rand data: ", data)
             childNode = Node(dlist[d], plist, destinationList, data)
-            print("data in node: ", childNode.data)
+            #print("data in node: ", childNode.data)
             if n.name not in childNode.parents:
-                print("added parent to list")
+                #print("added parent to list")
                 childNode.parents.append(name)
-            print("Current: " + str(childNode.name))
-            print("Parents: " + str(childNode.parents))
-            print("Children: "+ str(childNode.children))
+            #print("Current: " + str(childNode.name))
+            #print("Parents: " + str(childNode.parents))
+            #print("Children: "+ str(childNode.children))
             n.children.append(childNode)
             makeTree(childNode, goal, destinationList)
     return 0
@@ -65,7 +65,7 @@ def makeTree(n, goal, destinationList):
 #     results = []
 #     parents = []
 #     destinationList = userInput[:-1].copy()
-#     print(destinationList)
+#     #print(destinationList)
 #     start = Node(userInput[0], emptyList, destinationList[:-1], results)
 #     goal = Node(userInput[-1], emptyList, '', '')
 #     makeTree(start, goal, destinationList)
