@@ -20,9 +20,12 @@ class GoogleAPI():
             jsonBody['start'] = results[0]['legs'][0]['start_address']
             jsonBody['end'] = results[0]['legs'][0]['end_address']
             jsonBody['distance'] = results[0]['legs'][0]['distance']['text']
-            jsonBody['duration'] = results[0]['legs'][0]['duration']['text']
-            jsonBody['duration_traffic'] = results[0]['legs'][0]['duration_in_traffic']['text']
+            jsonBody['duration'] = results[0]['legs'][0]['duration']['value']
+            jsonBody['duration_traffic'] = results[0]['legs'][0]['duration_in_traffic']['value']
             # print(jsonBody)
             return jsonBody
         except:
             sys.exit("Google API Error")
+
+test = GoogleAPI()
+print(test.directions('el monte', 'csuf'))

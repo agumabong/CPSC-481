@@ -20,7 +20,6 @@ def genChildren(n, goal, destinationList):
     # print(dlist)
     if len(dlist) == 0:
         #print("added goal")
-
         data = googleapi.directions(n.name, goal.name)
         newGoal = Node(goal.name, [], [], data)
         # #print("goal parents", goal.parents)
@@ -40,8 +39,7 @@ def genChildren(n, goal, destinationList):
         n.children.append(newGoal)
         return 0
 
-    else:
-
+    else: 
         for d in range(len(dlist)):
             # Call API between current node and dlist[d] = data
             data = googleapi.directions(n.name, dlist[d])

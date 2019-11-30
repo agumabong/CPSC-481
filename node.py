@@ -7,6 +7,7 @@ class Node(object):
         self.destinations = destinations
         self.visited = False
         self.examined = False
+        self.time = 0
 
     def ___str___(self):
         return self.name

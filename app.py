@@ -4,15 +4,15 @@ from algo import *
 googleapi = GoogleAPI()
 
 def askRouteType():
-    user_input = input("Find the shortest distance or time? ")
+    user_input = input("Find the shortest distance or duration? ")
     if (user_input.lower() == "distance"):
         routeType = "distance"
         validType = True
-    elif (user_input.lower() == "time"):
-        routeType = "time"
+    elif (user_input.lower() == "duration"):
+        routeType = "duration"
         validType = True
     else:
-        print("Invalid input, please put time or distance")
+        print("Invalid input, please put duration or distance")
         validType = False
         askRouteType()
     return [routeType, validType]
