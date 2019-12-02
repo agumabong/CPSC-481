@@ -11,12 +11,16 @@ def min(lst, routetype):
         if routetype == "distance":
             data = float(lst[i].data[routetype].replace(" mi",""))
         elif routetype == "duration":
-            # print(lst[i].data)
+            print(lst[i].data[routetype])
+            if isinstance(lst[i].data[routetype], str):
+                data = float(lst[i].data[routetype].replace(" mins", ""))
+            else:
+                data = float(lst[i].data[routetype])
             # {'start': '', 'end': '', 'distance': '0.0 mi', 'duration': '0 mins', 'duration_traffic': '0 mins'}
             # [routetype]
             # problem 1: routetype = "time", which isn't in the dictionary
             # problem 2: your [0:-x] is hard coded af; try getting rid of " mins" and " mi" instead of getting the digits
-            data = float(lst[i].data[routetype].replace(" mins", ""))
+            # data = float(lst[i].data[routetype].replace(" mins", ""))
         # if len(lst[i].parents) > 0:
         #     print(lst[i].parents[-1], "to",lst[i].name, data)
         if data < min:
