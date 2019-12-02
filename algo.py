@@ -5,15 +5,18 @@ def min(lst, routetype):
     minIndex = 0
     for i in range(len(lst)):
         # data = lst[i].data
-        data = float(lst[i].data[routetype][0:-2].replace(",",""))
-        # if routetype == "distance":
-        #     data = float(lst[i].data[routetype][0:-3].replace(",",""))
-        # elif routetype == "time":
-        #     totalTime = 0
-        #     time = lst[i].data[routetype]
-        #     if day in time:
-        #         dayInMins =
-        #     data = float(lst[i].data[routetype][0:-5].replace(",",))
+
+        # print(lst[i].data[routetype], type(lst[i].data[routetype]))
+        # data = float(lst[i].data[routetype][0:-2].replace(",",""))
+        if routetype == "distance":
+            data = float(lst[i].data[routetype][0:-3].replace(",",""))
+        elif routetype == "duration":
+            # tData = lst[i].data[routetype][0:-5].replace(",","")
+            # print(tData, type(tData))
+            # data = float(tData)
+            data = lst[i].data[routetype]
+            # print(data, type(data))
+            # data = float(tempData[0:-5].replace(",",""))
         # if len(lst[i].parents) > 0:
             #print(lst[i].parents[-1], "to",lst[i].name, data)
         # #print("data type: ", type(data))
@@ -39,7 +42,7 @@ def algo(startNode, end, routetype, userList):
         # popped = pq.pop(0)
         # #print("popped type:", type(popped))
         # if len(popped.parents) > 0:
-            #print("popped:", popped.parents[-1], "to", popped.name)
+            # print("popped:", popped.parents[-1], "to", popped.name)
         # #print("pq:", pq)
         # #print("pq length:", len(pq))
         # #print("min function type", type(min(pq, routetype)))
@@ -61,7 +64,7 @@ def algo(startNode, end, routetype, userList):
                 pathString = pathString + " -> " + i
             return pathString
         else:
-            genChildren(popped, goal, userList)
+            genChildren(popped, goal, userList[:-1])
             for i in popped.children:
                 if i.visited == False:
                     i.visited = True

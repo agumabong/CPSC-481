@@ -33,7 +33,7 @@ def genChildren(n, goal, destinationList):
         #     goal.parents.append(i)
         # goal.parents.append(n.name)
 
-        #print("new goal parents:", newGoal.parents)
+        # print("new goal parents:", newGoal.parents)
         # goal.parents.append(n.parents)
         # goal.parents.append(name)
         # n.children.append(goal)
@@ -52,9 +52,9 @@ def genChildren(n, goal, destinationList):
             if n.name not in childNode.parents:
                 #print("added parent to list")
                 childNode.parents.append(name)
-            #print("Current: " + str(childNode.name))
-            #print("Parents: " + str(childNode.parents))
-            #print("Children: "+ str(childNode.children))
+            # print("Current: " + str(childNode.name))
+            # print("Parents: " + str(childNode.parents))
+            # print("Children: "+ str(childNode.children))
             n.children.append(childNode)
             # makeTree(childNode, goal, destinationList)
     return 0

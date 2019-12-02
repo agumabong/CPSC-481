@@ -9,7 +9,7 @@ def askRouteType():
         routeType = "distance"
         validType = True
     elif (user_input.lower() == "time"):
-        routeType = "time"
+        routeType = "duration"
         validType = True
     else:
         print("Invalid input, please put time or distance")
@@ -45,7 +45,7 @@ def main():
     #print(destinationList)
 
     # startData = googleapi.directions(userInput[0], userInput[0])
-    startData = {'start': '', 'end': '', 'distance': '0.0 mi', 'duration': '0 mins', 'duration_traffic': '0 mins'}
+    startData = {'start': '', 'end': '', 'distance': '0.0 mi', 'duration': 0, 'duration_traffic': '0 mins'}
     start = Node(userInput[0], emptyList, destinationList[:-1], startData)
     goal = Node(userInput[-1], emptyList, '', emptyList)
     # print("Generating tree...")
