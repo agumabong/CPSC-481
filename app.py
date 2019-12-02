@@ -1,6 +1,6 @@
 from googleUtility import GoogleAPI
-from makeTree import *
-
+# from makeTree import *
+from algo import *
 googleapi = GoogleAPI()
 
 def askRouteType():
@@ -9,11 +9,12 @@ def askRouteType():
         routeType = "distance"
         validType = True
     elif (user_input.lower() == "time"):
-        routeType = "time"
+        routeType = "duration"
         validType = True
     else:
         print("Invalid input, please put time or distance")
         validType = False
+        askRouteType()
     return [routeType, validType]
 
 def main():
@@ -35,28 +36,41 @@ def main():
         else:
             userInput.append(tempDestination)
             maxDestinations += 1
-    print(userInput)
+    #print(userInput)
 
     # make tree
     emptyList = []
     emptyDict = {}
     parents = []
     destinationList = userInput[:-1].copy()
-    print(destinationList)
-    start = Node(userInput[0], emptyList, destinationList[:-1], emptyDict)
-    goal = Node(userInput[-1], emptyList, '', emptyDict)
-    makeTree(start, goal, destinationList)
+    #print(destinationList)
+
+    # startData = googleapi.directions(userInput[0], userInput[0])
+    startData = {'start': '', 'end': '', 'distance': '0.0 mi', 'duration': 0, 'duration_traffic': '0 mins'}
+    start = Node(userInput[0], emptyList, destinationList[:-1], startData)
+    goal = Node(userInput[-1], emptyList, '', emptyList)
+    # print("Generating tree...")
+    # makeTree(start, goal, destinationList)
 
     # accessing nodes
-    print(routeType[0])
+    #print(routeType[0])
+    #print("start:", start.name)
     #print(start.destinations)
-    #print(start.children)
-    for child in start.children:
-        print(child.data['distance'])
-
-    # get data['distance']
+    # for i in start.children:
+        #print(i.name)
+        #print(type(i.data))
+        #print("data:", i.data)
+    # #print(start.children[0].name)
+    #print(start.parents)
     # use start node
 
+    # print("========================== START OF ALGORITHM =============================")
+    print("Starting algorithm...")
+    path = algo(start, goal, routeType[0], userInput)
+    print("Algorithm complete...")
+    print("user input:", userInput)
+    #print("path type:", type(path))
+    print("path:", path)
 #googleapi.directions(startLoc, nextLoc)
 
 if __name__ == "__main__":

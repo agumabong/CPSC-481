@@ -7,6 +7,8 @@ class Node(object):
         self.parents = parents
         self.children = []
         self.destinations = destinations
+        self.visited = False
+        self.examined = False
 
     def ___str___(self):
         return self.name
