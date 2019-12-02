@@ -24,7 +24,7 @@ def genChildren(n, goal, destinationList):
         newGoal = Node(goal.name, [], [], data)
         # #print("goal parents", goal.parents)
         # #print("n.parents", n.parents)
-        # #print("n.name", n.name)
+        # #("n.name", n.name)
         # goal.parents.clear()
         for i in n.parents:
             newGoal.parents.append(i)
