@@ -35,7 +35,7 @@ def main():
             break
         else:
             userInput.append(tempDestination)
-            maxDestinations += 1
+    
     #print(userInput)
 
     # make tree

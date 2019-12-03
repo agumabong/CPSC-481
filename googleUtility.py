@@ -1,4 +1,4 @@
-import googlemaps, json
+import googlemaps, json, sys
 from datetime import datetime
 
 # Load config file
