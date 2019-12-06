@@ -2,7 +2,7 @@
 This program utilizes Google Directions API to calculate the best route between destinations. User can select best route by distance or time. Destinations are unlimited (be reasonable).
 
 # Libraries
-- Python 3.6
+- Python 3.7
 - Python Virtual Environment
 - Google Directions API: https://developers.google.com/maps/documentation/directions/start
 
