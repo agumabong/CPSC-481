@@ -58,3 +58,5 @@ Algorithm complete...
 User Input: ['los angeles', 'fullerton', 'long beach', 'irvine', 'pasadena']
 Path: los angeles -> fullerton -> irvine -> long beach -> pasadena
 Total: 108.4 miles```
+
+Github URL: https://github.com/agumabong/CPSC-481/blob/master/README.md
