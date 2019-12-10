@@ -34,7 +34,7 @@ This program utilizes Google Directions API to calculate the best route between 
 # Running program
 1. Enter `distance` or `time`
 2. Enter at least 3 locations
-3. Enter `end` finished
+3. Enter `end` when you want to calculate route
 
 # Example Program
 ```Welcome to Route Calculator!
