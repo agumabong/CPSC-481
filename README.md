@@ -7,12 +7,12 @@ This program utilizes Google Directions API to calculate the best route between 
 - Google Directions API: https://developers.google.com/maps/documentation/directions/start
 
 # Function Descriptions
-1. `app.py` - Main application. Gets user input
+1. `app.py` - Main application. Gets user input and calls the algorithm function.
 2. `googleUtility.py` - Calls Google Directions API
-3. `node.py` - Node object
-4. `makeTree.py` - Creates tree of route
-5. `genChildren.py` -
-6. `algo.py` -
+3. `node.py` - Node object, used for each destination along the route and allows us to store crucial information, such as a list of parents and the path size to its parents.
+4. `makeTree.py` - Creates tree of route. Has all possible paths from the starting point to the final destination, essentially brute force.
+5. `genChildren.py` - Generates children of a node, based on its parent list and unvisited destinations.
+6. `algo.py` - The backend of our algorithm, it handles everything from comparing heuristics to look for the lowest value and implementation of Best-First Search. Uses genChildren.py in the algorithm. The Best-First Search algorithm uses a priority queue to hold all the paths being considered at that time, and uses a helper function to select the shortest path from the priority queue. 
 
 # Installation
 1. Create virtual environment
