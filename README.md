@@ -16,7 +16,7 @@ This program utilizes Google Directions API to calculate the best route between 
 4. Install libraries
     `pip install -r requirements.txt`
 5. Run program
-    `python app.py`
+    `python3 app.py`
 
 # Running program
 1. Enter `distance` or `time`
