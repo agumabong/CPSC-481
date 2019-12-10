@@ -6,6 +6,14 @@ This program utilizes Google Directions API to calculate the best route between 
 - Python Virtual Environment
 - Google Directions API: https://developers.google.com/maps/documentation/directions/start
 
+# Function Descriptions
+1. `app.py` - Main application. Gets user input
+2. `googleUtility.py` - Calls Google Directions API
+3. `node.py` - Node object
+4. `makeTree.py` - Creates tree of route
+5. `genChildren.py` -
+6. `algo.py` -
+
 # Installation
 1. Create virtual environment
     `virtualenv env`
