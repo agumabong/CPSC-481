@@ -1,8 +1,8 @@
 # Authors
-Kevin Vu (Team Leader)
-Aaron Supppp
-David Lee
-Raymond Tang
+- Kevin Vu (Team Leader)
+- Aaron Supppp
+- David Lee
+- Raymond Tang
 # Route Calculator
 This program utilizes Google Directions API to calculate the best route between destinations. User can select best route by distance or time. Destinations are unlimited (be reasonable).
 
