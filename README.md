@@ -1,6 +1,6 @@
 # Authors
 - Kevin Vu (Team Leader)
-- Aaron Supppp
+- Aaron Gumabong
 - David Lee
 - Raymond Tang
 # Route Calculator
